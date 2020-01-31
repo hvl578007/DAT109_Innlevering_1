@@ -6,7 +6,7 @@ package no.hvl.dat109;
  */
 public class Observator {
 
-    private static final int SPELARAR = 2;
+    private static final int SPELARAR = 4;
 
     public static void main(String[] args) {
         

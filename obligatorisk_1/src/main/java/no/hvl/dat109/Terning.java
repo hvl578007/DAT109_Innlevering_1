@@ -3,7 +3,7 @@ package no.hvl.dat109;
 import java.util.Random;
 
 /**
- * Definerar ein terning
+ * Klasse som definerar ein terning
  * @author Stian Grønås
  */
 public class Terning {
@@ -32,7 +32,9 @@ public class Terning {
     public int getVerdi() {
         return verdi;
     }
-    
-    //setVerdi() ikkje aktuelt?!
+
+    public void setVerdi(int verdi) {
+        this.verdi = verdi;
+    }
 
 }

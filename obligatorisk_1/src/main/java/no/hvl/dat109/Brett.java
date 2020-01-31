@@ -1,7 +1,7 @@
 package no.hvl.dat109;
 
 /**
- * Definerar ei brett
+ * Klasse som definerar eit brett
  * @author Stian Grønås
  */
 public class Brett {
@@ -41,6 +41,9 @@ public class Brett {
         //ITERASJON 2 - målregelen (om ein går over rute 100 så står ein i ro) - berre setje nummeret til det gamle nummeret
         if(nr > 100) {
             return rute;
+        } else if (nr < 0) {
+            //iterasjon 3 - om nummeret blir mindre enn 0 -> skal til startruta
+            return ruter[0];
         } else {
 
             //iterasjon 2 - henter verdien til ruta og legg til på nr-variabelen som hentar ut den nye ruta

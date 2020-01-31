@@ -54,7 +54,7 @@ public class SpelUI {
      * @param nyRute
      * @param verdi
      */
-    public void skrivUtTrekk(Spelar spelar, Rute nyRute, int verdi) {
+    public static void skrivUtTrekk(Spelar spelar, Rute nyRute, int verdi) {
         System.out.println(spelar.getNamn() + " trilla " + verdi + ", og flytta til rute nr. " + nyRute.getNummer());
     }
 

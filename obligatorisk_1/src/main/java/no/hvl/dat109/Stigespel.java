@@ -1,7 +1,7 @@
 package no.hvl.dat109;
 
 /**
- * Definerar eit stigespel
+ * Klasse som definerar eit stigespel
  * @author Stian Grønås
  */
 public class Stigespel {
@@ -93,7 +93,7 @@ public class Stigespel {
 
             spelar.gjerTrekk(this.terning);
             //TODO spelet skriv ut trekket!?
-            spelUI.skrivUtTrekk(spelar, spelar.getBrikke().getRute(), this.terning.getVerdi());
+            //spelUI.skrivUtTrekk(spelar, spelar.getBrikke().getRute(), this.terning.getVerdi());
 
             boolean vunne = spelar.harVunne();
 

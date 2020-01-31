@@ -1,15 +1,18 @@
 package no.hvl.dat109;
 
 /**
- * Definerar ein spelar
+ * Klasse som definerar ein spelar
  * @author Stian Grønås
  */
 public class Spelar {
 
+    private static final int MAKS_KAST_MED_SEKSER = 3;
     //felles terning?
     //private Terning terning;
     private String namn;
     private Brikke brikke;
+
+    private boolean kanFlytte;
 
     /**
      * Opprettar ein spelar med det namnet og brikka
@@ -20,6 +23,7 @@ public class Spelar {
         this.namn = namn;
         this.brikke = brikke;
         //this.terning = terning;
+        this.kanFlytte = true;
     }
 
     /**
@@ -29,14 +33,26 @@ public class Spelar {
 
         //Rute forrigeRute = brikke.getRute();
 
-        terning.trill();
-        int verdi = terning.getVerdi();
+        int verdi = 0;
 
-        //evt la spelaren flytte brikka?
-        brikke.flytt(verdi);
+        //iterasjon 3 - terningsreglane. Kunne godt implementert ein annan plass, og burde kanskje gjort det..
+        do {
+            terning.trill();
+            verdi += terning.getVerdi();
+        } while (terning.getVerdi() == 6 && verdi < 6 * MAKS_KAST_MED_SEKSER);
+        
+        if (verdi >= 6 * MAKS_KAST_MED_SEKSER) {
+            this.setKanFlytte(false);
+            brikke.flytt(Integer.MIN_VALUE);
+        } else {
+            //evt la spelaren flytte brikka?
+            brikke.flytt(verdi);
+        }
 
         //TODO spelaren seier trekket sitt til UI? Litt usikkert... Berre ny rute? Eller ta med at ein gjekk frå rute nr x til rute nr y?
-        //SpelUI.skrivUtTrekk(this, brikke.getRute(), verdi);
+
+        //skriv ut her for å få rett verdi...
+        SpelUI.skrivUtTrekk(this, brikke.getRute(), verdi);
         //treng vel ikkje sende med ruta...
     }
 
@@ -56,12 +72,12 @@ public class Spelar {
         this.namn = namn;
     }
 
-    public Brikke getBrikke() {
-        return brikke;
+    public boolean isKanFlytte() {
+        return kanFlytte;
     }
 
-    public void setBrikke(Brikke brikke) {
-        this.brikke = brikke;
+    public void setKanFlytte(boolean kanFlytte) {
+        this.kanFlytte = kanFlytte;
     }
 
     

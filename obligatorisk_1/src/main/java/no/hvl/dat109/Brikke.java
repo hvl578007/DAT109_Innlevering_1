@@ -1,7 +1,7 @@
 package no.hvl.dat109;
 
 /**
- * Definerar ei brikke
+ * Klasse som definerar ei brikke
  * @author Stian Grønås
  */
 public class Brikke {

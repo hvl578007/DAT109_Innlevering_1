@@ -1,7 +1,7 @@
 package no.hvl.dat109;
 
 /**
- * Rute
+ * Klasse som definerar ei rute
  */
 public class Rute {
 
@@ -9,6 +9,10 @@ public class Rute {
     //iterasjon 2
     private int verdi;
 
+    /**
+     * Lagar ei rute med det nummeret
+     * @param nummer
+     */
     public Rute(int nummer) {
         this.nummer = nummer;
     }
