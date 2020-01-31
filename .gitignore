@@ -1,6 +1,6 @@
 ﻿/build/*
 /src/META-INF/resources.xml
-/target/*
+/obligatorisk_1/target/*
 
 # Compiled class file
 *.class
