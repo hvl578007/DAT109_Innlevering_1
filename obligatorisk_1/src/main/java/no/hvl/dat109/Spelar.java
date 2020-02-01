@@ -36,23 +36,60 @@ public class Spelar {
         int verdi = 0;
 
         //iterasjon 3 - terningsreglane. Kunne godt implementert ein annan plass, og burde kanskje gjort det..
+        
+        //gammal versjon der ein trilla opp til 3 gonger og så flytta
+        /*
         do {
             terning.trill();
             verdi += terning.getVerdi();
+            if (terning.getVerdi() == 6 && kanFlytte == false) {
+                this.setKanFlytte(true);
+            }
         } while (terning.getVerdi() == 6 && verdi < 6 * MAKS_KAST_MED_SEKSER);
         
         if (verdi >= 6 * MAKS_KAST_MED_SEKSER) {
             this.setKanFlytte(false);
             brikke.flytt(Integer.MIN_VALUE);
-        } else {
+        }
+        
+        if (isKanFlytte()) {
             //evt la spelaren flytte brikka?
             brikke.flytt(verdi);
         }
+        */
+
+        //spelar flyttar etter eit kast og så kastar på nytt...
+
+        int antKast = 0;
+
+        do {
+            terning.trill();
+            verdi = terning.getVerdi();
+
+            antKast++;
+
+            if (verdi == 6 && !isKanFlytte()) {
+                this.setKanFlytte(true);
+            }
+
+            if (antKast == 3 && verdi == 6) {
+                this.setKanFlytte(false);
+                brikke.flytt(Integer.MIN_VALUE);
+                //burde ha eigen melding, flytte til start
+                SpelUI.skrivUtTrekk(this, brikke.getRute(), Integer.MIN_VALUE);
+            }
+
+            if (isKanFlytte()) {
+                brikke.flytt(verdi);
+                SpelUI.skrivUtTrekk(this, brikke.getRute(), verdi);
+            }
+
+        } while (verdi == 6 && antKast < 3);
 
         //TODO spelaren seier trekket sitt til UI? Litt usikkert... Berre ny rute? Eller ta med at ein gjekk frå rute nr x til rute nr y?
 
         //skriv ut her for å få rett verdi...
-        SpelUI.skrivUtTrekk(this, brikke.getRute(), verdi);
+        //SpelUI.skrivUtTrekk(this, brikke.getRute(), verdi);
         //treng vel ikkje sende med ruta...
     }
 
